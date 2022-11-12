@@ -15,6 +15,7 @@
 
           <form id="account" method="post" class="mt-12">
             <div class="space-y-6">
+              <div asp-validation-summary="ModelOnly" class="text-danger"></div>
               <div>
                 <label asp-for="Input.Email" class="text-sm font-bold text-gray-900"> Email </label>
                 <div class="relative mt-2">
@@ -24,7 +25,7 @@
                     </svg>
                   </div>
 
-                  <input asp-for="Input.Email" name="" id="" placeholder="Email address" value="" class="border block w-full py-3 pl-12 pr-4 placeholder-gray-500 border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm caret-indigo-600" />
+                  <input asp-for="Input.Email" aria-required="true" placeholder="Email address" value="" class="border block w-full py-3 pl-12 pr-4 placeholder-gray-500 border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm caret-indigo-600" />
                 </div>
               </div>
 
@@ -41,7 +42,7 @@
                     </svg>
                   </div>
 
-                  <input asp-for="Input.Password" name="" id="" placeholder="Password (min. 8 character)" value="" class="border block w-full py-3 pl-12 pr-4 placeholder-gray-500 border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm caret-indigo-600" />
+                  <input asp-for="Input.Password" aria-required="true" placeholder="Password (min. 8 character)" value="" class="border block w-full py-3 pl-12 pr-4 placeholder-gray-500 border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm caret-indigo-600" />
                 </div>
               </div>
 
