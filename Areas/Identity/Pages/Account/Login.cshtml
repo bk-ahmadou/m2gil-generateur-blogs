@@ -5,7 +5,110 @@
     ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
+<section class="py-12 bg-white sm:py-16 lg:py-20">
+  <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+    <div class="grid grid-cols-1 gap-y-12 lg:gap-x-20 lg:grid-cols-2 2xl:gap-x-8">
+      <div>
+        <div class="2xl:max-w-sm">
+          <h1 class="text-3xl font-bold text-gray-900">Welcome Back 👋</h1>
+          <p class="mt-4 text-sm font-medium leading-6 text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis morbi pulvinar venenatis non.</p>
+
+          <form id="account" method="post" class="mt-12">
+            <div class="space-y-6">
+              <div>
+                <label asp-for="Input.Email" class="text-sm font-bold text-gray-900"> Email </label>
+                <div class="relative mt-2">
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                    </svg>
+                  </div>
+
+                  <input asp-for="Input.Email" name="" id="" placeholder="Email address" value="" class="border block w-full py-3 pl-12 pr-4 placeholder-gray-500 border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm caret-indigo-600" />
+                </div>
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between">
+                  <label asp-for="Input.Password" class="text-sm font-bold text-gray-900"> Password </label>
+
+                  <a id="forgot-password" asp-page="./ForgotPassword" class="text-sm font-medium text-indigo-600 hover:text-indigo-700"> Forgot Password? </a>
+                </div>
+                <div class="relative mt-2">
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  </div>
+
+                  <input asp-for="Input.Password" name="" id="" placeholder="Password (min. 8 character)" value="" class="border block w-full py-3 pl-12 pr-4 placeholder-gray-500 border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm caret-indigo-600" />
+                </div>
+              </div>
+
+              <div class="relative flex items-center">
+                <div class="flex items-center h-5">
+                  <input asp-for="Input.RememberMe" name="remember-password" id="remember-password" class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-600" />
+                </div>
+
+                <div class="ml-3">
+                  <label asp-for="Input.RememberMe" class="text-sm font-medium text-gray-900"> Remember Me </label>
+                </div>
+              </div>
+
+              <div>
+                <button type="submit"
+                        class="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold leading-5 text-white transition-all duration-200 bg-indigo-600 border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 hover:bg-indigo-500">
+                  Sign in
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="relative mt-6">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-200"></div>
+            </div>
+
+            <div class="relative flex justify-center">
+              <span class="px-2 text-sm text-gray-400 bg-white"> or </span>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <button type="button"
+                    class="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold leading-5 text-gray-600 transition-all duration-200 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 hover:bg-gray-50 hover:text-gray-900">
+              <img class="w-5 h-5 mr-2" src="https://landingfoliocom.imgix.net/store/collection/clarity-dashboard/images/previews/sign-in/1/google-logo.svg" alt="" />
+              Sign in with Google
+            </button>
+          </div>
+
+          <div class="mt-20">
+            <p class="text-sm font-medium text-gray-900">Don't have any? <a href="#" title="" class="font-bold text-indigo-600 hover:underline">Create a free account</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="overflow-hidden text-center bg-gray-100 rounded-2xl">
+        <div class="flex items-center justify-center px-8 py-12 sm:px-12 sm:py-16 md:py-24 md:px-20">
+          <div>
+            <img class="w-auto mx-auto" src="https://img.freepik.com/vecteurs-libre/chevron-vecteur-style-africain-motifs-tribaux_1110-455.jpg?w=1380&t=st=1668257345~exp=1668257945~hmac=8fcb9ac323557ee777d615dbd2860be563b3a83ff62c57573b45da041ec8c293" alt="" />
+            <p class="mt-4 text-2xl font-bold text-gray-900">Decouvrir un monde connaissance</p>
+            <p class="mt-4 text-sm font-medium text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis morbi pulvinar venenatis non.</p>
+
+            <div class="flex items-center justify-center mt-16 space-x-1.5">
+              <div class="w-2.5 h-2.5 bg-gray-600 rounded-full"></div>
+              <div class="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
+              <div class="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+@*<h1>@ViewData["Title"]</h1>
 <div class="row">
     <div class="col-md-4">
         <section>
@@ -78,7 +181,7 @@
             }
         </section>
     </div>
-</div>
+</div>*@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

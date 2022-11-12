@@ -23,6 +23,7 @@ namespace m2gil_generateur_blogs.Controllers
       return View();
     }
 
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
