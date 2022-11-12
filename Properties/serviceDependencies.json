@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:m2gil_generateur_blogsContextConnection"
+    }
+  }
+}
