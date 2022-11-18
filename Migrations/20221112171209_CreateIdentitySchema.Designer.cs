@@ -11,7 +11,7 @@ using m2gil_generateur_blogs.Data;
 
 namespace m2gil_generateur_blogs.Migrations
 {
-    [DbContext(typeof(m2gil_generateur_blogsContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20221112171209_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {

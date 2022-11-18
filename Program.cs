@@ -1,14 +1,15 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using m2gil_generateur_blogs.Areas.Identity.Models;
 using m2gil_generateur_blogs.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("m2gil_generateur_blogsContextConnection") ?? throw new InvalidOperationException("Connection string 'm2gil_generateur_blogsContextConnection' not found.");
 
-builder.Services.AddDbContext<m2gil_generateur_blogsContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<m2gil_generateur_blogsContext>();
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
