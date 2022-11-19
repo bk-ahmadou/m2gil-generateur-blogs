@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <Target Name="Tailwind" BeforeTargets="Build">
-    <Exec Command="npm run style:build"/>
+    <Exec Command="npm run style:build" />
   </Target>
 
 </Project>

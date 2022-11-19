@@ -14,6 +14,33 @@
 
           <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="mt-12">
             <div class="space-y-6">
+
+              <div>
+                <label asp-for="Input.FirstName" class="text-sm font-bold text-gray-900"> First Name </label>
+                <div class="relative mt-2">
+                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                    </svg>
+                  </div>
+
+                  <input asp-for="Input.FirstName" id="" placeholder="Jane" value="" class="block w-full rounded-lg border border-gray-300 py-3 pl-12 pr-4 placeholder-gray-500 caret-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 sm:text-sm" />
+                </div>
+              </div>
+
+              <div>
+                <label asp-for="Input.LastName" class="text-sm font-bold text-gray-900"> Last Name </label>
+                <div class="relative mt-2">
+                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                    </svg>
+                  </div>
+
+                  <input asp-for="Input.FirstName" id="" placeholder="Smith" value="" class="block w-full rounded-lg border border-gray-300 py-3 pl-12 pr-4 placeholder-gray-500 caret-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 sm:text-sm" />
+                </div>
+              </div>
+
               <div>
                 <label asp-for="Input.Email" class="text-sm font-bold text-gray-900"> Email </label>
                 <div class="relative mt-2">
