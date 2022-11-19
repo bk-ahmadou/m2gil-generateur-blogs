@@ -25,6 +25,7 @@
                     </div>
 
                   <input asp-for="Input.FirstName" id="" placeholder="Jane" value="" class="block w-full rounded-lg border border-gray-300 py-3 pl-12 pr-4 placeholder-gray-500 caret-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 sm:text-sm" />
+                  <span class="block sm:inline" asp-validation-for="Input.FirstName"></span>
                 </div>
               </div>
 
@@ -37,7 +38,8 @@
                         </svg>
                     </div>
 
-                  <input asp-for="Input.FirstName" id="" placeholder="Smith" value="" class="block w-full rounded-lg border border-gray-300 py-3 pl-12 pr-4 placeholder-gray-500 caret-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 sm:text-sm" />
+                  <input asp-for="Input.LastName" id="" placeholder="Smith" value="" class="block w-full rounded-lg border border-gray-300 py-3 pl-12 pr-4 placeholder-gray-500 caret-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 sm:text-sm" />
+                  <span class="block sm:inline" asp-validation-for="Input.LastName"></span>
                 </div>
               </div>
 
@@ -51,6 +53,7 @@
                   </div>
 
                   <input asp-for="Input.Email" id="" placeholder="Email address" value="" class="block w-full rounded-lg border border-gray-300 py-3 pl-12 pr-4 placeholder-gray-500 caret-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 sm:text-sm" />
+                  <span class="block sm:inline" asp-validation-for="Input.Email"></span>
                 </div>
               </div>
 
@@ -64,6 +67,7 @@
                   </div>
 
                   <input asp-for="Input.Password" id="" placeholder="Password (min. 8 character)" value="" class="block w-full rounded-lg border border-gray-300 py-3 pl-12 pr-4 placeholder-gray-500 caret-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 sm:text-sm" />
+                  <span class="block sm:inline" asp-validation-for="Input.Password"></span>
                 </div>
               </div>
 
@@ -77,6 +81,7 @@
                   </div>
 
                   <input asp-for="Input.ConfirmPassword" id="" placeholder="Retype password" value="" class="block w-full rounded-lg border border-gray-300 py-3 pl-12 pr-4 placeholder-gray-500 caret-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 sm:text-sm" />
+                  <span class="block sm:inline" asp-validation-for="Input.ConfirmPassword"></span>
                 </div>
               </div>
 
