@@ -125,7 +125,7 @@ namespace m2gil_generateur_blogs.Areas.Identity.Pages.Account
 
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
-                //_userManager.AddToRoleAsync(user,)
+                await _userManager.AddToRoleAsync(user, "Member");
                   
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

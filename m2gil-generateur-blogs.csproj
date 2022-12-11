@@ -21,12 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\" />
-    <Folder Include="Areas\Superviseur\Controllers\" />
-    <Folder Include="Areas\Superviseur\Models\" />
-    <Folder Include="Areas\Superviseur\Views\" />
   </ItemGroup>
 
   <Target Name="Tailwind" BeforeTargets="Build">
