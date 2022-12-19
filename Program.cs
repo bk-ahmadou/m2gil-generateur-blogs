@@ -29,7 +29,14 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 using (var scope = app.Services.CreateScope())
 {
-  CustomRoleManagement.CreateRoles(scope.ServiceProvider).Wait();
+  try
+  {
+    SeedData.CreateRoles(scope.ServiceProvider).Wait();
+  }
+  catch(Exception ex)
+  {
+    Console.WriteLine(ex.Message);
+  }
 }
 
 if (!app.Environment.IsDevelopment())

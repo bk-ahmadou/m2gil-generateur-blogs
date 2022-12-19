@@ -67,7 +67,7 @@
                   </div>
 
                   <input asp-for="Input.Password" id="" placeholder="Password (min. 8 character)" value="" class="block w-full rounded-lg border border-gray-300 py-3 pl-12 pr-4 placeholder-gray-500 caret-indigo-600 focus:border-indigo-600 focus:ring-indigo-600 sm:text-sm" />
-                  <span class="block sm:inline text-red-700" asp-validation-for="Input.Password"></span>
+                  <span class="block sm:inline" asp-validation-for="Input.Password"></span>
                 </div>
               </div>
 
@@ -199,9 +199,6 @@
         </section>
     </div>
 </div>*@
-
-<span class="text-red-900">HHHHHHH</span>
-
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

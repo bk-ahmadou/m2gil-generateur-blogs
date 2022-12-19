@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -125,8 +126,8 @@ namespace m2gil_generateur_blogs.Areas.Identity.Pages.Account
 
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
-                await _userManager.AddToRoleAsync(user, "Member");
-                  
+                await _userManager.AddToRoleAsync(user, "Membre");
+
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
