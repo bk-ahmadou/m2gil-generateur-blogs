@@ -33,7 +33,7 @@ using (var scope = app.Services.CreateScope())
   {
     SeedData.CreateRoles(scope.ServiceProvider).Wait();
   }
-  catch(Exception ex)
+  catch (Exception ex)
   {
     Console.WriteLine(ex.Message);
   }
@@ -50,7 +50,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthentication();;
+app.UseAuthentication(); ;
 
 app.UseAuthorization();
 
@@ -58,9 +58,9 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-    name: "area",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+//app.MapControllerRoute(
+//    name: "area",
+//    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 
 
