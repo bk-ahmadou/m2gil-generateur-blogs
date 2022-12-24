@@ -5,6 +5,8 @@ using m2gil_generateur_blogs.Areas.Identity.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Identity;
 using m2gil_generateur_blogs.Utils;
+using m2gil_generateur_blogs.Repositories;
+using m2gil_generateur_blogs.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("m2gil_generateur_blogsContextConnection") ?? throw new InvalidOperationException("Connection string 'm2gil_generateur_blogsContextConnection' not found.");
@@ -23,6 +25,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
+
+builder.Services.AddTransient<IBlogRepository,BlogRepository>();
+
+builder.Services.AddDbContext<BlogsDbContext>(
+    dbContextOptions => dbContextOptions.UseSqlServer(builder.Configuration.GetConnectionString("m2gil_generateur_blogsContextConnection")));
+
 
 var app = builder.Build();
 

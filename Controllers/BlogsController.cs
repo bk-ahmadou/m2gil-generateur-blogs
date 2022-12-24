@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using m2gil_generateur_blogs.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace m2gil_generateur_blogs.Controllers
 {
@@ -9,8 +10,9 @@ namespace m2gil_generateur_blogs.Controllers
       return View();
     }
 
-    public IActionResult AddBlog()
+    public IActionResult AddBlog(Blog blog)
     {
+      int id = blog.Id;
       return View();
     }
   }
