@@ -14,9 +14,9 @@ namespace m2gil_generateur_blogs.Controllers
       _blogRepository = blogRepository;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-      var blogs = _blogRepository.GetBlogsAsync();
+      var blogs = await _blogRepository.GetBlogsAsync();
       return View(blogs);
     }
 
@@ -25,7 +25,7 @@ namespace m2gil_generateur_blogs.Controllers
     {
       if (!ModelState.IsValid)
       {
-
+        return View(blog);
       }
       await _blogRepository.AddBlogAsync(blog);
       await _blogRepository.SavesChagesAsync();

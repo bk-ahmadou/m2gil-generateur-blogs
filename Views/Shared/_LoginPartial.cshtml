@@ -8,10 +8,14 @@
 @if (SignInManager.IsSignedIn(User))
 {
   <div class="hidden lg:flex lg:items-center lg:space-x-10">
-    <a class="nav-link text-dark" id="manage" asp-area="" asp-controller="Blogs" asp-action="AddBlog" title="Create Blog">Create Blog</a>
+    <a class="nav-link text-dark" id="manage" asp-area="" asp-controller="Blogs" asp-action="AddBlog" title="Ecrire">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+      </svg>
+    </a>
     <a class="nav-link text-dark" id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@UserManager.GetUserName(User) </a>
     <form id="logoutForm"  asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-      <button id="logout" type="submit" class="">Logout</button>
+      <button id="logout" type="submit" class="">Se deconnecter</button>
     </form>
   </div>
     @*<li class="nav-item">
@@ -33,9 +37,9 @@ else
         <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>*@
     <div class="hidden lg:flex lg:items-center lg:space-x-10">
-      <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register"> Sign up </a>
+      <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register"> S'inscrire</a>
 
-      <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login"> Sign in </a>
+      <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login"> S'authentifier</a>
     </div>
 }
 

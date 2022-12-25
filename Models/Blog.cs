@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace m2gil_generateur_blogs.Models
@@ -9,18 +10,18 @@ namespace m2gil_generateur_blogs.Models
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     //public string OwnerId { get; set; }
-    [Required]
+    [Required(ErrorMessage = "Le titre est obligatoire")]
     [MaxLength(50)]
-    public string Title { get; set; }=string.Empty;
+    public string Title { get; set; } = string.Empty;
     /*[MaxLength(200)]
     public string Description { get; set; }=string.Empty;*/
-    [Required]
-    public string Category { get; set; }=string.Empty;
-    [Column(TypeName ="ntext")]
+    [Required(ErrorMessage = "La category est obligatoire")]
+    public string Category { get; set; } = string.Empty;
+    [Column(TypeName = "ntext")]
     [Url]
-    public string ImageUrl { get; set; }  = string.Empty;
-    public string Content { get; set; } = string.Empty;
-    [Timestamp]
-    public DateTime CreatedAt { get; set; }
+    [Required(ErrorMessage = "L'image est obligatoire")]
+    public string ImageUrl { get; set; } = string.Empty;
+    public string Content { get; set; } = "Good Luck";
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
   }
 }

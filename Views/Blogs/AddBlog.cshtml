@@ -1,4 +1,7 @@
 ﻿@model m2gil_generateur_blogs.Models.Blog
+@{
+  ViewData["Title"] = "Ajout d'un blog";
+}
 
 <div class="py-12">
   <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -6,42 +9,46 @@
       <div class="p-6 bg-white border-b border-gray-200">
         <form method="POST" asp-controller="Blogs" asp-action"="AddBlog">
           <div class="mb-6">
-            <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label><br />
+            <label class="text-sm text-gray-600 font-bold">Title <span class="text-red-500">*</span></label><br />
             <div class="relative mt-2">
-              <input type="text" class="block w-full rounded-lg border border-gray-300 p-2" name="title" id="title" value="" required>
+              <input type="text" class="block w-full rounded-lg border border-gray-300 p-2" asp-for="Title">
+              <span class="text-red-500 text-xs italic" asp-validation-for="Title"></span>
             </div>
           </div>
 
           <div class="flex flex-wrap space-x-3 mt-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <div class="">
-                <label class="text-xl text-gray-600">Image Url <span class="text-red-500">*</span></label>
+                <label class="text-sm text-gray-600 font-bold">Image Url <span class="text-red-500">*</span></label>
                 <div class="relative mt-2">
-                  <input type="text" class="block w-full rounded-lg border border-gray-300 p-2 w-full" name="imageUrl" id="imageUrl" placeholder="https://images.png" required>
+                  <input type="text" class="block w-full rounded-lg border border-gray-300 p-2 w-full" asp-for="ImageUrl" placeholder="https://images.png">
+                  <span class="text-red-500 text-xs italic" asp-validation-for="ImageUrl"></span>
                 </div>
               </div>
             </div>
             <div class="w-full md:w-1/2 px-3">
               <div class="x">
-                <label class="text-xl text-gray-600">Category <span class="text-red-500">*</span></label>
+                <label class="text-sm text-gray-600 font-bold">Category <span class="text-red-500">*</span></label>
                 <div class="relative mt-2">
-                  <input type="text" class="block w-full rounded-lg border border-gray-300 p-2 w-full" name="category" id="category" required>
+                  <input type="text" class="block w-full rounded-lg border border-gray-300 p-2 w-full" asp-for="Category">
                 </div>
+                <span class="text-red-500 text-xs italic" asp-validation-for="Category"></span>
               </div>
             </div>
           </div>
 
           <div class="mt-4">
-            <label class="text-xl text-gray-600">Content</label><br />
+            <label class="text-sm text-gray-600 font-bold">Content</label><br />
             <div class="relative mt-2">
-              <textarea name="content" class="border-2 border-gray-500">
+              <textarea asp-for="Content" name="content" class="border-2 border-gray-500">
 
             </textarea>
             </div>
+            <span class="text-red-500 text-xs italic" asp-validation-for="Content"></span>
           </div>
 
           <div class="mt-8">
-            <button type="submit" class="inline-flex rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-sm font-semibold leading-5 text-white transition-all duration-200 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2">Save</button>
+            <button type="submit" class="inline-flex rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-sm font-semibold leading-5 text-white transition-all duration-200 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2">Enregistrer</button>
           </div>
 
         </form>
@@ -55,3 +62,7 @@
 <script>
   CKEDITOR.replace('content');
 </script>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}
