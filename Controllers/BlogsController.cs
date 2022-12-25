@@ -14,6 +14,7 @@ namespace m2gil_generateur_blogs.Controllers
       _blogRepository = blogRepository;
     }
 
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
       var blogs = await _blogRepository.GetBlogsAsync();
@@ -36,5 +37,13 @@ namespace m2gil_generateur_blogs.Controllers
     {
       return View();
     }
+
+    [HttpGet("blog/{id}")]
+    public async Task<IActionResult> BlogDetails(int id=15)
+    {
+      var blog = await _blogRepository.GetBlogAsync(id);
+      return View(blog);
+    }
+
   }
 }
