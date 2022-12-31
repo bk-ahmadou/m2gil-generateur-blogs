@@ -23,5 +23,8 @@ namespace m2gil_generateur_blogs.Models
     public string ImageUrl { get; set; } = string.Empty;
     public string Content { get; set; } = "Good Luck";
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    // user ID from AspNetUser table.
+    //public string OwnerID { get; set; }
   }
 }

@@ -1,5 +1,7 @@
-﻿using m2gil_generateur_blogs.Models;
+﻿using m2gil_generateur_blogs.Areas.Identity.Models;
+using m2gil_generateur_blogs.Models;
 using m2gil_generateur_blogs.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -8,10 +10,12 @@ namespace m2gil_generateur_blogs.Controllers
   public class BlogsController : Controller
   {
     private readonly IBlogRepository _blogRepository;
+    private readonly UserManager<ApplicationUser> UserManager;
 
-    public BlogsController(IBlogRepository blogRepository)
+    public BlogsController(IBlogRepository blogRepository, UserManager<ApplicationUser> userManager)
     {
       _blogRepository = blogRepository;
+      UserManager = userManager;
     }
 
     [HttpGet]
@@ -35,15 +39,25 @@ namespace m2gil_generateur_blogs.Controllers
 
     public IActionResult AddBlog()
     {
+      var users = UserManager.Users;
       return View();
     }
 
-    [HttpGet("blog/{id}")]
-    public async Task<IActionResult> BlogDetails(int id=15)
+    [HttpGet]
+    public async Task<IActionResult> BlogDetails(int id)
     {
       var blog = await _blogRepository.GetBlogAsync(id);
       return View(blog);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> UserBlogs()
+    {
+      var userId = UserManager.GetUserId(User);
+      await _blogRepository.GetBlogsAsync();
+      return View();
+    }
+
 
   }
 }

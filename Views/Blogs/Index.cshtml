@@ -22,7 +22,7 @@
     <div class="grid grid-cols-1 mt-16 lg:mt-20 lg:grid-cols-2 gap-y-12 lg:gap-y-16 lg:gap-x-32 xl:mt-24">
       @foreach(var blog in Model){
         <div class="flex items-center">
-          <a asp-controller="Blogs" asp-action="BlogDetails" asp-route-id="/blog/@blog.Id" title="" class="shrink-0">
+          <a asp-area="" asp-controller="Blogs" asp-action="BlogDetails" asp-route-id="@blog.Id" title="" class="shrink-0">
             <img class="w-28 h-28 rounded-xl object-cvoer" src="@blog.ImageUrl" alt="" />
           </a>
 
@@ -35,7 +35,7 @@
               <p class="text-sm font-medium text-gray-900">@blog.CreatedAt.ToString("dd MMMM yyyy")</p>
             </div>
             <p class="max-w-xs mt-3 text-xl font-bold text-gray-900 group-hover:text-gray-600">
-              <a asp-controller="Blogs" asp-action="BlogDetails" asp-route-id="/blog/@blog.Id" title="" class="">@blog.Title</a>
+              <a asp-area="" asp-controller="Blogs" asp-action="BlogDetails" asp-route-id="@blog.Id" title="" class="">@blog.Title</a>
             </p>
           </div>
         </div>

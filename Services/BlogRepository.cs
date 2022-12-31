@@ -35,7 +35,12 @@ namespace m2gil_generateur_blogs.Services
 
     public async Task<IEnumerable<Blog>> GetBlogsAsync()
     {
-      return await _context.Blogs.OrderBy(b => b.Title).ToListAsync();
+      return await _context.Blogs.ToListAsync();
+    }
+
+    public Task<IEnumerable<Blog>> GetUserBlogsAsync()
+    {
+      throw new NotImplementedException();
     }
 
     public async Task<bool> SavesChagesAsync()
