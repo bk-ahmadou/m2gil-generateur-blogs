@@ -47,5 +47,10 @@ namespace m2gil_generateur_blogs.Services
     {
       return (await _context.SaveChangesAsync() >= 0);
     }
+
+    public void UpdateBlogAsync(Blog blog)
+    {
+      _context.Update(blog);  
+    }
   }
 }

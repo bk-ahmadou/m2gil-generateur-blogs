@@ -43,6 +43,24 @@ namespace m2gil_generateur_blogs.Controllers
       return View();
     }
 
+    public async Task<IActionResult> UpdateBlog(int id)
+    {
+      var blog = await _blogRepository.GetBlogAsync(id);
+      return View(blog);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateBlog(Blog blog)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(blog);
+      }
+      _blogRepository.UpdateBlogAsync(blog);
+      await _blogRepository.SavesChagesAsync();
+      return RedirectToAction("UserBlogs");
+    }
+
     [HttpGet]
     public async Task<IActionResult> BlogDetails(int id)
     {
@@ -54,10 +72,9 @@ namespace m2gil_generateur_blogs.Controllers
     public async Task<IActionResult> UserBlogs()
     {
       var userId = UserManager.GetUserId(User);
-      await _blogRepository.GetBlogsAsync();
-      return View();
+      var userBlogs = await _blogRepository.GetBlogsAsync();
+      return View(userBlogs);
     }
-
 
   }
 }

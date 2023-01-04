@@ -3,7 +3,7 @@
 @using m2gil_generateur_blogs.Areas.Identity.Models
 @inject UserManager<ApplicationUser> UserManager
 @{
-  ViewData["Title"] = "Ajout d'un blog";
+  ViewData["Title"] = "Modification d'un blog";
 }
 
 <div class="py-12">
@@ -34,30 +34,6 @@
                 <label class="text-sm text-gray-600 font-bold">Category <span class="text-red-500">*</span></label>
                 <div class="relative mt-2">
                   <input type="text" class="block w-full rounded-lg border border-gray-300 p-2 w-full" asp-for="Category">
-                </div>
-                <span class="text-red-500 text-xs italic" asp-validation-for="Category"></span>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 px-3">
-              <div class="x">
-                <label class="text-sm text-gray-600 font-bold">Auteur</label>
-                <div class="relative mt-2">
-                  <select asp-for="ApplicationUserId" class="form-select form-select-lg rounded-lg appearance-none block p-2 w-full border border-solid border-gray-300 rounded">
-                    @{
-                      var users = UserManager.Users;
-                      List<ApplicationUser> list = new List<ApplicationUser>();
-                      foreach (var user in users)
-                      {
-                        list.Add(user);
-                      }
-
-                      foreach (var item in list)
-                      {
-                        <option value="@item.Id">@item.FirstName @item.LastName</option>
-                      }
-                    }
-                  </select>
-                  @*<input type="text" class="block w-full rounded-lg border border-gray-300 p-2 w-full" asp-for="Category">*@
                 </div>
                 <span class="text-red-500 text-xs italic" asp-validation-for="Category"></span>
               </div>
