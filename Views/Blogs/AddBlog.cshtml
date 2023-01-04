@@ -22,7 +22,7 @@
           <div class="flex flex-wrap space-x-3 mt-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <div class="">
-                <label class="text-sm text-gray-600 font-bold">Image Url <span class="text-red-500">*</span></label>
+                <label class="text-sm text-gray-600 font-bold">L'URL de l'image <span class="text-red-500">*</span></label>
                 <div class="relative mt-2">
                   <input type="text" class="block w-full rounded-lg border border-gray-300 p-2 w-full" asp-for="ImageUrl" placeholder="https://images.png">
                   <span class="text-red-500 text-xs italic" asp-validation-for="ImageUrl"></span>
@@ -31,7 +31,7 @@
             </div>
             <div class="w-full md:w-1/2 px-3">
               <div class="x">
-                <label class="text-sm text-gray-600 font-bold">Category <span class="text-red-500">*</span></label>
+                <label class="text-sm text-gray-600 font-bold">Categorie <span class="text-red-500">*</span></label>
                 <div class="relative mt-2">
                   <input type="text" class="block w-full rounded-lg border border-gray-300 p-2 w-full" asp-for="Category">
                 </div>
@@ -65,7 +65,7 @@
           </div>
 
           <div class="mt-4">
-            <label class="text-sm text-gray-600 font-bold">Content</label><br />
+            <label class="text-sm text-gray-600 font-bold">Contenu</label><br />
             <div class="relative mt-2">
               <textarea asp-for="Content" name="content" class="border-2 border-gray-500">
 
@@ -84,7 +84,7 @@
                    <option value="true">PUBLISHED</option>
                   </select>
                 </div>
-                <span class="text-red-500 text-xs italic" asp-validation-for="Category"></span>
+                <span class="text-red-500 text-xs italic" asp-validation-for="IsPublished"></span>
               </div>
             </div>
           </div>

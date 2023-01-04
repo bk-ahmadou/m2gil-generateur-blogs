@@ -5,7 +5,49 @@
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
-<h3>@ViewData["Title"]</h3>
+
+<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-md">
+  <div class="md:flex">
+    <div class="w-full p-2 py-10">
+
+      <div class="flex justify-center">
+        <div class="relative">
+
+          <img src="https://img.freepik.com/photos-gratuite/rendu-3d-avatar-appel-zoom_23-2149556783.jpg" class="rounded-full" width="80">
+          <span class="absolute border-white border-4 h-5 w-5 top-12 left-16 bg-green-700 rounded-full"></span>
+
+
+        </div>
+
+      </div>
+
+      <div class="flex flex-col text-center mt-3 mb-4">
+
+        <span class="text-2xl font-medium">Ahmadou kassoum</span>
+        <span class="text-md text-gray-400">Ahmadou.kassoum@univ-rouen.fr</span>
+
+      </div>
+
+      <p class="px-16 text-center text-md text-gray-800">  <a class="text-blue-800 text-md font-bold" href="#"></p>
+
+      <div class="px-16 mt-3 text-center">
+      </div>
+
+      <div class="px-14 mt-5">
+
+        <button class="h-12 bg-gray-200 w-full text-black text-md rounded hover:shadow hover:bg-gray-300 mb-2">Mes blogs </button>
+
+        <button class="h-12 bg-blue-700 w-full text-white text-md rounded hover:shadow hover:bg-blue-800"> Modifiez</button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+@*<h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
     <div class="col-md-6">
@@ -23,7 +65,7 @@
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
         </form>
     </div>
-</div>
+</div>*@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

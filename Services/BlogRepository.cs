@@ -18,6 +18,7 @@ namespace m2gil_generateur_blogs.Services
        await _context.AddAsync(blog);
     }
 
+    //This methode Verify if Blog exists
     public async Task<bool> BlogExistsAsync(int blogId)
     {
       return await _context.Blogs.AnyAsync(b => b.Id == blogId);
@@ -28,6 +29,7 @@ namespace m2gil_generateur_blogs.Services
       _context.Blogs.Remove(blog);
     }
 
+    //This
     public async Task<Blog?> GetBlogAsync(int blogId)
     {
       return await _context.Blogs.Where(b => b.Id == blogId).FirstOrDefaultAsync();
