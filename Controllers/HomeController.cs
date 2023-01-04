@@ -24,7 +24,7 @@ namespace m2gil_generateur_blogs.Controllers
     public async Task<IActionResult> Index()
     {
       var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
-      var blogs = await _blogRepository.GetBlogsAsync();
+      var blogs = await _blogRepository.GetBlogsByDateLimitSixAsync();
       //return RedirectToAction()
       return View(blogs);
     }

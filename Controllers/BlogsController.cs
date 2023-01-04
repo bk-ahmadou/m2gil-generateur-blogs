@@ -56,6 +56,8 @@ namespace m2gil_generateur_blogs.Controllers
       {
         return View(blog);
       }
+      var userId = UserManager.GetUserId(User);
+      blog.ApplicationUserId = userId;  
       _blogRepository.UpdateBlogAsync(blog);
       await _blogRepository.SavesChagesAsync();
       return RedirectToAction("UserBlogs");
@@ -72,7 +74,7 @@ namespace m2gil_generateur_blogs.Controllers
     public async Task<IActionResult> UserBlogs()
     {
       var userId = UserManager.GetUserId(User);
-      var userBlogs = await _blogRepository.GetBlogsAsync();
+      var userBlogs = await _blogRepository.GetUserBlogsAsync(userId);
       return View(userBlogs);
     }
 
