@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using m2gil_generateur_blogs.Areas.Identity.Models;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,10 +22,11 @@ namespace m2gil_generateur_blogs.Models
     [Url]
     [Required(ErrorMessage = "L'image est obligatoire")]
     public string ImageUrl { get; set; } = string.Empty;
-    public string Content { get; set; } = "Good Luck";
+    public string? Content { get; set; } = "Good Luck";
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     // user ID from AspNetUser table.
-    //public string OwnerID { get; set; }
+    public string? ApplicationUserId { get; set; }
+    ApplicationUser? ApplicationUser { get; set; }
   }
 }

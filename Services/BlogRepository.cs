@@ -1,14 +1,14 @@
-﻿using m2gil_generateur_blogs.Models;
-using m2gil_generateur_blogs.Repositories;
+﻿using m2gil_generateur_blogs.Data;
+using m2gil_generateur_blogs.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace m2gil_generateur_blogs.Services
 {
   public class BlogRepository : IBlogRepository
   {
-    private readonly BlogsDbContext _context;
+    private readonly ApplicationDbContext _context;
 
-    public BlogRepository(BlogsDbContext context)
+    public BlogRepository(ApplicationDbContext context)
     {
       _context = context;
     }

@@ -5,7 +5,6 @@ using m2gil_generateur_blogs.Areas.Identity.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Identity;
 using m2gil_generateur_blogs.Utils;
-using m2gil_generateur_blogs.Repositories;
 using m2gil_generateur_blogs.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,8 +27,6 @@ builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 builder.Services.AddTransient<IBlogRepository,BlogRepository>();
 
-builder.Services.AddDbContext<BlogsDbContext>(
-    dbContextOptions => dbContextOptions.UseSqlServer(builder.Configuration.GetConnectionString("m2gil_generateur_blogsContextConnection")));
 
 
 var app = builder.Build();

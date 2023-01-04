@@ -1,4 +1,5 @@
 ﻿using m2gil_generateur_blogs.Areas.Identity.Models;
+using m2gil_generateur_blogs.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ namespace m2gil_generateur_blogs.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
+  public DbSet<Blog> Blogs { get; set; }  
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {

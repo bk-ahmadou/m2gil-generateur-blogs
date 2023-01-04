@@ -1,4 +1,7 @@
 ﻿@model m2gil_generateur_blogs.Models.Blog
+@using Microsoft.AspNetCore.Identity
+@using m2gil_generateur_blogs.Areas.Identity.Models
+@inject UserManager<ApplicationUser> UserManager
 @{
   ViewData["Title"] = "Ajout d'un blog";
 }
@@ -83,8 +86,20 @@
               <div class="x">
                 <label class="text-sm text-gray-600 font-bold">Auteur</label>
                 <div class="relative mt-2">
-                  <select class="form-select form-select-lg rounded-lg appearance-none block p-2 w-full border border-solid border-gray-300 rounded">
-                    <option>Ali</option>
+                  <select asp-for="ApplicationUserId" class="form-select form-select-lg rounded-lg appearance-none block p-2 w-full border border-solid border-gray-300 rounded">
+                    @{
+                      var users = UserManager.Users;
+                      List<ApplicationUser> list = new List<ApplicationUser>();
+                      foreach (var user in users)
+                      {
+                        list.Add(user);
+                      }
+
+                      foreach (var item in list)
+                      {
+                        <option value="@item.Id">@item.FirstName @item.LastName</option>
+                      }
+                    }
                   </select>
                   @*<input type="text" class="block w-full rounded-lg border border-gray-300 p-2 w-full" asp-for="Category">*@
                 </div>
