@@ -35,12 +35,12 @@ namespace m2gil_generateur_blogs.Services
 
     public async Task<IEnumerable<Blog>> GetBlogsAsync()
     {
-      return await _context.Blogs.ToListAsync();
+      return await _context.Blogs.Where(b=>b.IsPublished.Equals(true)).ToListAsync();
     }
 
     public async Task<IEnumerable<Blog>> GetBlogsByDateLimitSixAsync()
     {
-      return await _context.Blogs.OrderBy(b=>b.CreatedAt).Take(6).ToListAsync();
+      return await _context.Blogs.Where(b=>b.IsPublished.Equals(true)).OrderBy(b=>b.CreatedAt).Take(6).ToListAsync();
     }
 
     public async Task<IEnumerable<Blog>> GetUserBlogsAsync(string userId)

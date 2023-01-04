@@ -27,7 +27,7 @@ namespace m2gil_generateur_blogs.Controllers
 
     [HttpPost]
     public async Task<IActionResult> AddBlog(Blog blog)
-    {
+    { 
       if (!ModelState.IsValid)
       {
         return View(blog);

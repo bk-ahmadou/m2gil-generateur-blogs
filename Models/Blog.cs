@@ -23,6 +23,8 @@ namespace m2gil_generateur_blogs.Models
     [Required(ErrorMessage = "L'image est obligatoire")]
     public string ImageUrl { get; set; } = string.Empty;
     public string? Content { get; set; } = "Good Luck";
+    [DefaultValue(false)]
+    public Boolean IsPublished { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     // user ID from AspNetUser table.
