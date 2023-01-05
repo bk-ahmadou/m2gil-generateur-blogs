@@ -4,48 +4,48 @@ using Microsoft.EntityFrameworkCore;
 
 namespace m2gil_generateur_blogs.Services
 {
-  public class BlogRepository : IBlogRepository
+  public class PostRepository : IPostRepository
   {
     private readonly ApplicationDbContext _context;
 
-    public BlogRepository(ApplicationDbContext context)
+    public PostRepository(ApplicationDbContext context)
     {
       _context = context;
     }
 
-    public  async Task AddBlogAsync(Blog blog)
+    public  async Task AddBlogAsync(Post post)
     {
-       await _context.AddAsync(blog);
+       await _context.AddAsync(post);
     }
 
     //This methode Verify if Blog exists
-    public async Task<bool> BlogExistsAsync(int blogId)
+    public async Task<bool> BlogExistsAsync(int postId)
     {
-      return await _context.Blogs.AnyAsync(b => b.Id == blogId);
+      return await _context.Blogs.AnyAsync(b => b.Id == postId);
     }
 
-    public void DeleteBlog(Blog blog)
+    public void DeleteBlog(Post post)
     {
-      _context.Blogs.Remove(blog);
+      _context.Blogs.Remove(post);
     }
 
     //This
-    public async Task<Blog?> GetBlogAsync(int blogId)
+    public async Task<Post?> GetBlogAsync(int postId)
     {
-      return await _context.Blogs.Where(b => b.Id == blogId).FirstOrDefaultAsync();
+      return await _context.Blogs.Where(b => b.Id == postId).FirstOrDefaultAsync();
     }
 
-    public async Task<IEnumerable<Blog>> GetBlogsAsync()
+    public async Task<IEnumerable<Post>> GetBlogsAsync()
     {
       return await _context.Blogs.Where(b=>b.IsPublished.Equals(true)).ToListAsync();
     }
 
-    public async Task<IEnumerable<Blog>> GetBlogsByDateLimitSixAsync()
+    public async Task<IEnumerable<Post>> GetBlogsByDateLimitSixAsync()
     {
       return await _context.Blogs.Where(b=>b.IsPublished.Equals(true)).OrderBy(b=>b.CreatedAt).Take(6).ToListAsync();
     }
 
-    public async Task<IEnumerable<Blog>> GetUserBlogsAsync(string userId)
+    public async Task<IEnumerable<Post>> GetUserBlogsAsync(string userId)
     {
       return await _context.Blogs.Where(b=>b.ApplicationUserId.Equals(userId)).ToListAsync();
     }
@@ -55,9 +55,9 @@ namespace m2gil_generateur_blogs.Services
       return (await _context.SaveChangesAsync() >= 0);
     }
 
-    public void UpdateBlogAsync(Blog blog)
+    public void UpdateBlogAsync(Post post)
     {
-      _context.Update(blog);  
+      _context.Update(post);  
     }
   }
 }

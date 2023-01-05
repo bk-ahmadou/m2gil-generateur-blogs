@@ -104,7 +104,7 @@ namespace m2gil_generateur_blogs.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Action("Index","Blogs");
+            returnUrl ??= Url.Action("Index","Posts");
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 

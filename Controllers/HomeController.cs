@@ -12,9 +12,9 @@ namespace m2gil_generateur_blogs.Controllers
   {
     private readonly ILogger<HomeController> _logger;
     private readonly UserManager<ApplicationUser> _userManager;
-    private readonly IBlogRepository _blogRepository;
+    private readonly IPostRepository _blogRepository;
 
-    public HomeController(ILogger<HomeController> logger, UserManager<ApplicationUser> userManager, IBlogRepository blogRepository = null)
+    public HomeController(ILogger<HomeController> logger, UserManager<ApplicationUser> userManager, IPostRepository blogRepository = null)
     {
       _userManager = userManager;
       _logger = logger;

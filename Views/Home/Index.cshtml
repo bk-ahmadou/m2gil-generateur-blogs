@@ -2,7 +2,7 @@
     ViewData["Title"] = "Bienvenue";
 }
 
-@model IEnumerable<Blog>
+@model IEnumerable<Post>
 
 <section class="bg-[#FCF8F1] bg-opacity-30 py-10 sm:py-16 lg:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -37,7 +37,7 @@
     <div class="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-5 sm:mt-16 sm:gap-6 lg:mt-20 xl:max-w-none xl:grid-cols-2">
       @foreach(var blog in Model){
         <div class="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:shadow-lg sm:flex-row sm:items-stretch">
-          <a asp-controller="Blogs" asp-action="BlogDetails" asp-route-id="@blog.Id" title="" class="flex shrink-0 overflow-hidden rounded-xl">
+          <a asp-controller="Posts" asp-action="PostDetails" asp-route-id="@blog.Id" title="" class="flex shrink-0 overflow-hidden rounded-xl">
             <img class="h-44 w-full transform object-cover transition-all duration-200 group-hover:rotate-3 group-hover:scale-110" src="@blog.ImageUrl" alt="" />
           </a>
 
@@ -45,7 +45,7 @@
             <div class="flex-1">
               <p class="text-xs font-semibold uppercase tracking-widest text-blue-600">@blog.CreatedAt.ToString("dd MMMM yyyy")</p>
               <h3 class="mt-4 text-xl font-semibold leading-tight text-gray-900">
-                <a asp-controller="Blogs" asp-action="BlogDetails" asp-route-id="@blog.Id" title="" class=""> @blog.Title </a>
+                <a asp-controller="Posts" asp-action="POstDetails" asp-route-id="@blog.Id" title="" class=""> @blog.Title </a>
               </h3>
             </div>
 

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace m2gil_generateur_blogs.Models
 {
-  public class Blog
+  public class Post
   {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
