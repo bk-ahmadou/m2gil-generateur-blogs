@@ -1,23 +1,64 @@
 ﻿@page
 @model RegisterConfirmationModel
 @{
-    ViewData["Title"] = "Register confirmation";
+  ViewData["Title"] = "Register confirmation";
 }
 
-<h1>@ViewData["Title"]</h1>
 @{
-    if (@Model.DisplayConfirmAccountLink)
-    {
-<p>
-    This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
-    Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
-</p>
-    }
-    else
-    {
-<p>
-        Please check your email to confirm your account.
-</p>
-    }
+  if (@Model.DisplayConfirmAccountLink)
+  {
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12">
+      <div class="mx-auto max-w-4xl">
+        <div class="rounded-lg bg-green-50">
+          <div class="p-3">
+            <div class="flex items-start justify-between">
+              <svg class="h-5 w-5 flex-shrink-0 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+              </svg>
+
+              <div class="ml-3 flex-1">
+                <p class="text-sm font-bold text-green-700">vous venez de creez un compte</p>
+                <ul class="mt-2 list-outside list-disc space-y-1 pl-4 text-sm font-medium text-green-600">
+                  <li><a id="confirm-link" href="@Model.EmailConfirmationUrl">Cliquez pour valider votre Email</a> </li>
+                  <li>Révenez sur le site</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    //<p>
+    //  This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
+    //  Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
+    //</p>
+  }
+  else
+  {
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12">
+      <div class="mx-auto max-w-4xl">
+        <div class="rounded-lg bg-green-50">
+          <div class="p-3">
+            <div class="flex items-start justify-between">
+              <svg class="h-5 w-5 flex-shrink-0 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+              </svg>
+
+              <div class="ml-3 flex-1">
+                <p class="text-sm font-bold text-green-700">vous venez de creez un compte</p>
+                <ul class="mt-2 list-outside list-disc space-y-1 pl-4 text-sm font-medium text-green-600">
+                  <li>Merci de verifier votre EMail pour confirmer la creation votre compte</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    //<p>
+    //  Please check your email to confirm your account.
+    //</p>
+  }
 }
 

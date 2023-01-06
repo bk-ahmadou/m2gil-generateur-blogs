@@ -8,6 +8,7 @@ namespace m2gil_generateur_blogs.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
+  public DbSet<Post> Posts { get; set; }  
   public DbSet<Blog> Blogs { get; set; }  
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)

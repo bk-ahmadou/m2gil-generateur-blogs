@@ -13,23 +13,21 @@ namespace m2gil_generateur_blogs.Services
       _context = context;
     }
 
-    public  async Task AddBlogAsync(Blog blog)
+    public async Task AddBlogAsync(Blog blog)
     {
-       await _context.AddAsync(blog);
+      await _context.Blogs.AddAsync(blog);
     }
 
-    //This methode Verify if Blog exists
-    public async Task<bool> BlogExistsAsync(int blogId)
+    public async Task<bool> BlogExistsAsync(int postId)
     {
-      return await _context.Blogs.AnyAsync(b => b.Id == blogId);
+      return await _context.Posts.AnyAsync(b => b.Id == postId); ;
     }
 
     public void DeleteBlog(Blog blog)
     {
-      _context.Blogs.Remove(blog);
+      throw new NotImplementedException();
     }
 
-    //This
     public async Task<Blog?> GetBlogAsync(int blogId)
     {
       return await _context.Blogs.Where(b => b.Id == blogId).FirstOrDefaultAsync();
@@ -37,17 +35,12 @@ namespace m2gil_generateur_blogs.Services
 
     public async Task<IEnumerable<Blog>> GetBlogsAsync()
     {
-      return await _context.Blogs.Where(b=>b.IsPublished.Equals(true)).ToListAsync();
+      return await _context.Blogs.Where(b => b.IsPublic.Equals(true)).ToListAsync();
     }
 
-    public async Task<IEnumerable<Blog>> GetBlogsByDateLimitSixAsync()
+    public async Task<Blog?> GetUserBlogAsync(string userId)
     {
-      return await _context.Blogs.Where(b=>b.IsPublished.Equals(true)).OrderBy(b=>b.CreatedAt).Take(6).ToListAsync();
-    }
-
-    public async Task<IEnumerable<Blog>> GetUserBlogsAsync(string userId)
-    {
-      return await _context.Blogs.Where(b=>b.ApplicationUserId.Equals(userId)).ToListAsync();
+      return await _context.Blogs.Include(b=>b.Posts).Where(b => b.ApplicationUserId.Equals(userId)).FirstOrDefaultAsync();
     }
 
     public async Task<bool> SavesChagesAsync()
@@ -57,7 +50,12 @@ namespace m2gil_generateur_blogs.Services
 
     public void UpdateBlogAsync(Blog blog)
     {
-      _context.Update(blog);  
+      _context.Update(blog);
+    }
+
+    Task<Blog?> IBlogRepository.GetBlogAsync(int blogId)
+    {
+      throw new NotImplementedException();
     }
   }
 }

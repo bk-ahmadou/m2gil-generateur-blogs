@@ -1,0 +1,17 @@
+﻿@model Post
+
+<section class="bg-white py-12 sm:py-16 lg:py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl xl:max-w-4xl">
+      <p class="font-pj text-sm font-bold uppercase tracking-widest text-gray-400">Blog</p>
+      <h1 class="font-pj mt-7 text-3xl font-bold text-gray-900 sm:text-4xl xl:text-5xl">@Model.Title</h1>
+      <p class="font-pj mt-7 text-sm font-normal text-gray-600">@Model.CreatedAt.ToString("dd MMMM yyyy")2</p>
+
+      <div class="mt-10">//////</div>
+
+      <div class="mt-10">
+        @Html.Raw(Model.Content)
+      </div>
+    </div>
+  </div>
+</section>

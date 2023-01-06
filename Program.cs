@@ -25,6 +25,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
+builder.Services.AddTransient<IPostRepository,PostRepository>();
 builder.Services.AddTransient<IBlogRepository,BlogRepository>();
 
 
