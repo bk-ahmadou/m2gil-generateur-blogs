@@ -21,33 +21,33 @@ namespace m2gil_generateur_blogs.Services
     //This methode Verify if Blog exists
     public async Task<bool> BlogExistsAsync(int postId)
     {
-      return await _context.Blogs.AnyAsync(b => b.Id == postId);
+      return await _context.Posts.AnyAsync(b => b.Id == postId);
     }
 
     public void DeleteBlog(Post post)
     {
-      _context.Blogs.Remove(post);
+      _context.Posts.Remove(post);
     }
 
     //This
     public async Task<Post?> GetBlogAsync(int postId)
     {
-      return await _context.Blogs.Where(b => b.Id == postId).FirstOrDefaultAsync();
+      return await _context.Posts.Where(b => b.Id == postId).FirstOrDefaultAsync();
     }
 
     public async Task<IEnumerable<Post>> GetBlogsAsync()
     {
-      return await _context.Blogs.Where(b=>b.IsPublished.Equals(true)).ToListAsync();
+      return await _context.Posts.Where(b=>b.IsPublished.Equals(true)).ToListAsync();
     }
 
     public async Task<IEnumerable<Post>> GetBlogsByDateLimitSixAsync()
     {
-      return await _context.Blogs.Where(b=>b.IsPublished.Equals(true)).OrderBy(b=>b.CreatedAt).Take(6).ToListAsync();
+      return await _context.Posts.Where(b=>b.IsPublished.Equals(true)).OrderBy(b=>b.CreatedAt).Take(6).ToListAsync();
     }
 
     public async Task<IEnumerable<Post>> GetUserBlogsAsync(string userId)
     {
-      return await _context.Blogs.Where(b=>b.ApplicationUserId.Equals(userId)).ToListAsync();
+      return await _context.Posts.Where(b=>b.ApplicationUserId.Equals(userId)).ToListAsync();
     }
 
     public async Task<bool> SavesChagesAsync()

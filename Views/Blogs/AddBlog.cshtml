@@ -1,0 +1,83 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using m2gil_generateur_blogs.Areas.Identity.Models
+@inject UserManager<ApplicationUser> UserManager
+@model Blog
+
+@{
+  ViewData["Title"] = "Ajout d'un blog";
+}
+
+
+
+<section class="py-12 bg-white sm:py-16 lg:py-20">
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-5 lg:px-7">
+    <h2 class="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">Ajouter un Blog</h2>
+    <p class="mt-4 text-base font-normal leading-7 text-gray-600 lg:mt-6 lg:text-lg lg:leading-8">Renseignez tout le formulaire</p>
+
+    <form asp-controller="Blogs" asp-action="AddBlog" method="POST" class="mt-12 space-y-10 sm:mt-14 lg:mt-18">
+      <div class="space-y-5">
+        <div class="mt-4">
+          <label for="fullName" class="text-base font-medium text-gray-900"> Titre blog </label>
+          <div class="mt-2">
+            <input type="text" asp-for="Title" class="block w-full rounded-xl border border-gray-200 bg-white px-4 py-4 text-base text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600" />
+          </div>
+          <span class="text-red-500 text-xs italic mt-1 " asp-validation-for="Title"></span>
+        </div>
+
+        <div className="flex flex-wrap -mx-2 mb-2">
+          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="mt-4">
+              <label for="fullName" class="text-base font-medium text-gray-900"> Description </label>
+              <div class="mt-2">
+                <textarea asp-for="Description" class="block w-full rounded-xl border border-gray-200 bg-white px-4 py-4 text-base text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600" />
+                </textarea>
+              </div>
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="mt-4">
+              <label for="fullName" class="text-base font-medium text-gray-900"> Proprietaire </label>
+              <div class="mt-2">
+                <select asp-for="ApplicationUserId" class="block w-full rounded-xl border border-gray-200 bg-white px-4 py-4 text-base text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600">
+                  @{
+                    var users = UserManager.Users;
+                    List<ApplicationUser> list = new List<ApplicationUser>();
+                    foreach (var user in users)
+                    {
+                      list.Add(user);
+                    }
+
+                    foreach (var item in list)
+                    {
+                      <option value="@item.Id">@item.FirstName @item.LastName</option>
+                    }
+                  }
+                </select>
+              </div>
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="mt-4">
+              <label for="fullName" class="text-base font-medium text-gray-900"> status </label>
+              <div class="mt-2">
+                <select asp-for="IsPublic" class="block w-full rounded-xl border border-gray-200 bg-white px-4 py-4 text-base text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600">
+                  <option value="false">Privé</option>
+                  <option value="true">Public</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8">
+        <button type="submit" class="inline-flex rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-sm font-semibold leading-5 text-white transition-all duration-200 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2">Enregistrer</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

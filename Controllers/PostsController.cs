@@ -12,6 +12,7 @@ namespace m2gil_generateur_blogs.Controllers
   public class PostsController : Controller
   {
     private readonly IPostRepository _postRepository;
+    private readonly IBlogRepository _blogRepository;
     private readonly UserManager<ApplicationUser> UserManager;
 
     public PostsController(IPostRepository postRepository, UserManager<ApplicationUser> userManager)
@@ -28,7 +29,7 @@ namespace m2gil_generateur_blogs.Controllers
       return View(blogs);
     }
 
-    [Authorize(Roles = "Administrateur")]
+    [Authorize(Roles = "Membre")]
     [HttpPost]
     public async Task<IActionResult> AddPost(Post post)
     { 
@@ -36,12 +37,21 @@ namespace m2gil_generateur_blogs.Controllers
       {
         return View(post);
       }
-      await _postRepository.AddBlogAsync(post);
-      await _postRepository.SavesChagesAsync();
+
+      var userId = UserManager.GetUserId(User);
+      post.ApplicationUserId = userId;
+
+      var blog = await _blogRepository.GetUserBlogAsync(userId);
+      blog.Posts.Add(post);
+
+      //await _postRepository.AddBlogAsync(post);
+      //await _postRepository.SavesChagesAsync();
+      _blogRepository.SavesChagesAsync();
+
       return RedirectToAction("Index");
     }
 
-    [Authorize(Roles = "Administrateur")]
+    [Authorize(Roles = "Membre")]
     public IActionResult AddPost()
     {
       var users = UserManager.Users;
