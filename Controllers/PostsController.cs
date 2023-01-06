@@ -15,10 +15,11 @@ namespace m2gil_generateur_blogs.Controllers
     private readonly IBlogRepository _blogRepository;
     private readonly UserManager<ApplicationUser> UserManager;
 
-    public PostsController(IPostRepository postRepository, UserManager<ApplicationUser> userManager)
+    public PostsController(IPostRepository postRepository, UserManager<ApplicationUser> userManager, IBlogRepository blogRepository)
     {
       _postRepository = postRepository;
       UserManager = userManager;
+      _blogRepository = blogRepository;
     }
 
     [AllowAnonymous]
@@ -41,12 +42,13 @@ namespace m2gil_generateur_blogs.Controllers
       var userId = UserManager.GetUserId(User);
       post.ApplicationUserId = userId;
 
-      var blog = await _blogRepository.GetUserBlogAsync(userId);
-      blog.Posts.Add(post);
+      var blog =await _blogRepository.GetUserBlogAsync(userId);
+      post.Blog = blog;
+      //blog.Posts.Add(post);
 
-      //await _postRepository.AddBlogAsync(post);
-      //await _postRepository.SavesChagesAsync();
-      _blogRepository.SavesChagesAsync();
+      await _postRepository.AddBlogAsync(post);
+      await _postRepository.SavesChagesAsync();
+      //_blogRepository.SavesChagesAsync();
 
       return RedirectToAction("Index");
     }
@@ -78,7 +80,7 @@ namespace m2gil_generateur_blogs.Controllers
       post.ApplicationUserId = userId;
       _postRepository.UpdateBlogAsync(post);
       await _postRepository.SavesChagesAsync();
-      return RedirectToAction("UserBlogs");
+      return RedirectToAction("UserPosts");
     }
 
     [AllowAnonymous]
@@ -90,13 +92,24 @@ namespace m2gil_generateur_blogs.Controllers
     }
 
     [Authorize(Roles = "Administrateur, Membre")]
-
     [HttpGet]
     public async Task<IActionResult> UserPosts()
     {
+      
       var userId = UserManager.GetUserId(User);
-      var userBlogs = await _postRepository.GetUserBlogsAsync(userId);
-      return View(userBlogs);
+      var userPosts = await _postRepository.GetUserBlogsAsync(userId);
+
+      var userBlog = await _blogRepository.GetUserBlogAsync(userId);
+
+      if (userBlog == null)
+      {
+        ViewBag.HasBlog = false;
+      }
+      else
+      {
+        ViewBag.HasBlog = true;
+      }
+      return View(userPosts);
     }
 
   }

@@ -27,10 +27,12 @@
             <div class="px-16 mt-3 text-center">
             </div>
             <div class="px-14 mt-5">
-              <p class=" text-center ">@Model.UserBlog.Blog.Title <span>(Public)</span> </p>
-              <div class="mt-4">
-                <p class="text-gray-900 text-center ">@Model.UserBlog.Blog.Description</p>
-              </div>
+              @if(Model.UserBlog.Blog !=null){
+                <p class=" text-center ">@Model.UserBlog.Blog.Title <span>(Public)</span> </p>
+                <div class="mt-4">
+                  <p class="text-gray-900 text-center ">@Model.UserBlog.Blog.Description</p>
+                </div>
+              }
             </div>
           </div>
         </div>

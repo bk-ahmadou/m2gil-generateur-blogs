@@ -30,5 +30,7 @@ namespace m2gil_generateur_blogs.Models
     // user ID from AspNetUser table.
     public string? ApplicationUserId { get; set; }
     ApplicationUser? ApplicationUser { get; set; }
+
+    public virtual Blog? Blog { get; set; }
   }
 }

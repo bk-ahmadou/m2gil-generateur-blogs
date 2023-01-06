@@ -22,9 +22,9 @@ namespace m2gil_generateur_blogs.Models
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     // user ID from AspNetUser table.
-    public string? ApplicationUserId { get; set; }
-    ApplicationUser? ApplicationUser { get; set; }
+    public string ApplicationUserId { get; set; }
+    ApplicationUser ApplicationUser { get; set; }
 
-    public ICollection<Post>? Posts { get; set; }
+    public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
   }
 }

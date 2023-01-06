@@ -19,9 +19,12 @@
           </a>
         </div>
       </div>
-      <div>
-        <a asp-controller="Posts" asp-action="AddPost" type="submit" class="border border-gray-300 rounded py-2 px-2" style="position:relative; float:right">Ajouter un Post</a>
-      </div>
+      @if (ViewBag.HasBlog)
+      {
+        <div>
+          <a asp-controller="Posts" asp-action="AddPost" type="submit" class="border border-gray-300 rounded py-2 px-2" style="position:relative; float:right">Ajouter un Post</a>
+        </div>
+      }
     </div>
     <div class="grid grid-cols-1 mt-16 lg:mt-20 lg:grid-cols-2 gap-y-12 lg:gap-y-16 lg:gap-x-32 xl:mt-24">
       @foreach (var blog in Model)
