@@ -37,7 +37,7 @@ namespace m2gil_generateur_blogs.Services
     //This
     public async Task<Post?> GetBlogAsync(int postId)
     {
-      return await _context.Posts.Where(b => b.Id == postId).Include(b=>b.Comments).FirstOrDefaultAsync();
+      return await _context.Posts.Where(b => b.Id == postId).Include(b=>b.Comments).ThenInclude(c=>c.User).FirstOrDefaultAsync();
     }
 
     public async Task<IEnumerable<Post>> GetBlogsAsync()

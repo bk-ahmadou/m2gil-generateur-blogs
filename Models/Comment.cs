@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using m2gil_generateur_blogs.Areas.Identity.Models;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace m2gil_generateur_blogs.Models
@@ -7,8 +8,9 @@ namespace m2gil_generateur_blogs.Models
   {
     [Key]
     public int Id { get; set; }
-    public string? Value { get; set; }
+    [Required]
+    public string Value { get; set; }
     public Post? Post { get; set; }
-
+    public ApplicationUser? User { get; set; }
   }
 }
