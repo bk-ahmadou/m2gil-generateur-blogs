@@ -12,6 +12,8 @@
       <div class="mt-10">
         @Html.Raw(Model.Content)
       </div>
+      @Html.Partial("~/Views/Shared/_AddCommentPartial.cshtml", new Comment(){Post=Model })
+      @Html.Partial("~/Views/Shared/_DisplayComment.cshtml", Model.Comments)
     </div>
   </div>
 </section>

@@ -13,9 +13,14 @@ namespace m2gil_generateur_blogs.Services
       _context = context;
     }
 
-    public  async Task AddBlogAsync(Post post)
+    public  async Task AddComment(Comment comment)
     {
-       await _context.AddAsync(post);
+       await _context.Comments.AddAsync(comment);
+    }
+
+    public async Task AddBlogAsync(Post post)
+    {
+      await _context.Posts.AddAsync(post);
     }
 
     //This methode Verify if Blog exists
@@ -32,7 +37,7 @@ namespace m2gil_generateur_blogs.Services
     //This
     public async Task<Post?> GetBlogAsync(int postId)
     {
-      return await _context.Posts.Where(b => b.Id == postId).FirstOrDefaultAsync();
+      return await _context.Posts.Where(b => b.Id == postId).Include(b=>b.Comments).FirstOrDefaultAsync();
     }
 
     public async Task<IEnumerable<Post>> GetBlogsAsync()

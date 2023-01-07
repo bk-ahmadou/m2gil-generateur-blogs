@@ -87,8 +87,35 @@ namespace m2gil_generateur_blogs.Controllers
     [HttpGet]
     public async Task<IActionResult> PostDetails(int id)
     {
+
       var post = await _postRepository.GetBlogAsync(id);
+
       return View(post);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddComment(Comment comment, int id)
+    {
+
+      comment.Id = 0;
+      var post = await _postRepository.GetBlogAsync(id);
+      comment.Post = post;
+
+      await _postRepository.AddComment(comment);
+
+      await _postRepository.SavesChagesAsync();
+
+      return RedirectToAction("PostDetails", new { @id = id });
+    }
+
+    public async Task<IActionResult> DeletePost(int id)
+    {
+      var post = await _postRepository.GetBlogAsync(id);
+
+      _postRepository.DeleteBlog(post);
+      await _postRepository.SavesChagesAsync();
+
+      return RedirectToAction("UserPosts");
     }
 
     [Authorize(Roles = "Administrateur, Membre")]

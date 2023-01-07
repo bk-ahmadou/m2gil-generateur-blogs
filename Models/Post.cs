@@ -31,6 +31,8 @@ namespace m2gil_generateur_blogs.Models
     public string? ApplicationUserId { get; set; }
     ApplicationUser? ApplicationUser { get; set; }
 
+    public virtual ICollection<Comment>? Comments { get; set; }
+
     public virtual Blog? Blog { get; set; }
   }
 }
