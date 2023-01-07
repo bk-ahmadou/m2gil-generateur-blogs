@@ -13,5 +13,7 @@ namespace m2gil_generateur_blogs.Services
     void UpdateBlogAsync(Post post);
     void DeleteBlog(Post post);
     Task<bool> SavesChagesAsync();
+
+    Task AddComment(Comment comment);
   }
 }

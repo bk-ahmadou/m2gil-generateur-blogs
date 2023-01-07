@@ -30,7 +30,7 @@ namespace m2gil_generateur_blogs.Controllers
       return View(blogs);
     }
 
-    [Authorize(Roles = "Membre")]
+    [Authorize(Roles = "Membre, Administrateur")]
     [HttpPost]
     public async Task<IActionResult> AddPost(Post post)
     { 
@@ -53,7 +53,7 @@ namespace m2gil_generateur_blogs.Controllers
       return RedirectToAction("Index");
     }
 
-    [Authorize(Roles = "Membre")]
+    [Authorize(Roles = "Membre, Administrateur")]
     public IActionResult AddPost()
     {
       var users = UserManager.Users;
@@ -87,8 +87,44 @@ namespace m2gil_generateur_blogs.Controllers
     [HttpGet]
     public async Task<IActionResult> PostDetails(int id)
     {
+
       var post = await _postRepository.GetBlogAsync(id);
+
       return View(post);
+    }
+
+    [Authorize(Roles = "Administrateur, Membre")]
+
+    [HttpPost]
+    public async Task<IActionResult> AddComment(Comment comment, int id)
+    {
+      if (!ModelState.IsValid)
+      {
+        return RedirectToAction("PostDetails", new { @id = id });
+      }
+      var user = await UserManager.FindByIdAsync(UserManager.GetUserId(User));
+
+      comment.Id = 0;
+      var post = await _postRepository.GetBlogAsync(id);
+      comment.Post = post;
+      comment.User = user;
+
+      await _postRepository.AddComment(comment);
+
+      await _postRepository.SavesChagesAsync();
+
+      return RedirectToAction("PostDetails", new { @id = id });
+    }
+
+    [Authorize(Roles = "Administrateur, Membre")]
+    public async Task<IActionResult> DeletePost(int id)
+    {
+      var post = await _postRepository.GetBlogAsync(id);
+
+      _postRepository.DeleteBlog(post);
+      await _postRepository.SavesChagesAsync();
+
+      return RedirectToAction("UserPosts");
     }
 
     [Authorize(Roles = "Administrateur, Membre")]
